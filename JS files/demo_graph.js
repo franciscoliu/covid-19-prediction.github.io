@@ -369,8 +369,7 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Confirmed Cases"]
             });
-            // chart.options.title.text = "COVID-19 Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
-            // data.name = "GroundTruth" +  '(' + document.getElementById('searchbox').value + ')'
+            chart.options.data[0].legendText = "GroundTruth" +  '(' + document.getElementById('searchbox').value + ')';
             chart.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Confirmed Cases"]};
         }
         console.log(data);
@@ -382,7 +381,8 @@ window.onload = function () {
             dataPoints2.push({
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Predicted Cases"]
-            })
+            });
+            chart.options.data[1].legendText = "Predicted" +  '(' + document.getElementById('searchbox').value + ')';
             chart.options.data[1].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Predicted Cases"]}
         }   ///搜索框里的value引用这个函数，之后改data里面的值
         chart.render();
@@ -394,7 +394,7 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Confirmed Cases"]
             }); 
-            // chart2.options.title.text = "COVID-19 Confirmed Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
+            chart2.options.data[0].legendText = "GroundTruth" +  '(' + document.getElementById('searchbox').value + ')';
             chart2.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Confirmed Cases"]};
         }
         chart2.render();
@@ -406,7 +406,7 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Predicted Cases"]
             });
-            // chart3.options.title.text = "COVID-19 Predicted Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
+            chart3.options.data[0].legendText = "Predicted" +  '(' + document.getElementById('searchbox').value + ')';
             chart3.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Predicted Cases"]}
         }   ///搜索框里的value引用这个函数，之后改data里面的值
         chart3.render();
