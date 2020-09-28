@@ -3,7 +3,7 @@ window.onload = function () {
     var data1 = [{
         type: "line",
         showInLegend: true,
-        name: "GroundTruth",
+        name: "GroundTruth" ,
         markerType: "square",
         xValueFormatString: "DD MMM, YYYY",
         color: "#F08080",
@@ -48,9 +48,9 @@ window.onload = function () {
         width: 1070,
         animationEnabled: true,
         theme: "light2",
-        title: {
-            text: "COVID-19 Infection Trend" 
-        },
+        // title: {
+        //     text: "COVID-19 Infection Trend" 
+        // },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -88,9 +88,9 @@ window.onload = function () {
         width: 1070,
         animationEnabled: true,
         theme: "light2",
-        title: {
-            text: "COVID-19 Confirmed Infection Trend"
-        },
+        // title: {
+        //     text: "COVID-19 Confirmed Infection Trend"
+        // },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -129,9 +129,9 @@ window.onload = function () {
         width: 1070,
         animationEnabled: true,
         theme: "light2",
-        title: {
-            text: "COVID-19 Predicted Infection Trend"
-        },
+        // title: {
+        //     text: "COVID-19 Predicted Infection Trend"
+        // },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -177,6 +177,8 @@ window.onload = function () {
     var search_btn = document.querySelector('search_btn');
     var compare_btn = document.querySelector('compare_btn');
     var json_data
+    // ./JS files/JSON files/airtable.json
+    // ./JS files/JSON files/demo.json
     $.getJSON("./JS files/JSON files/demo.json", (data) => {
         // c = data.responseJSON;
         json_data = data;
@@ -240,6 +242,7 @@ window.onload = function () {
         data1.splice(2, data1.length);
         data2.splice(1, data2.length);
         data3.splice(1, data3.length);
+        // console.log(data1[0]);
         for (let i = 0; i < check_box.length; i++) {
             if (check_box[i].checked) {
                 let row = check_box[i].parentNode.parentNode;
@@ -301,6 +304,7 @@ window.onload = function () {
     $(".search_btn").click(() => {
         // console.log(chart.data[0]);
         let search_val = document.getElementById('searchbox').value;
+        console.log(search_val);
         let state =
         {
             "Alabama": "AL",
@@ -354,6 +358,11 @@ window.onload = function () {
             "Wisconsin": "WI",
             "Wyoming": "WY"
         }
+        for (let i = 0; i < check_box.length; i++) {
+            let row = check_box[i].parentNode.parentNode;
+            // console.log(row);
+            
+        }
         addData(json_data[state[search_val]]);
         // data1[0].showInLegend = true;
         // data1[1].showInLegend = true;
@@ -369,10 +378,10 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Confirmed Cases"]
             });
+            // chart.options.title.text = "COVID-19 Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
             chart.options.data[0].legendText = "GroundTruth" +  '(' + document.getElementById('searchbox').value + ')';
             chart.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Confirmed Cases"]};
         }
-        console.log(data);
         chart.render();
 
 
@@ -381,7 +390,7 @@ window.onload = function () {
             dataPoints2.push({
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Predicted Cases"]
-            });
+            })
             chart.options.data[1].legendText = "Predicted" +  '(' + document.getElementById('searchbox').value + ')';
             chart.options.data[1].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Predicted Cases"]}
         }   ///搜索框里的value引用这个函数，之后改data里面的值
@@ -394,6 +403,7 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Confirmed Cases"]
             }); 
+            // chart2.options.title.text = "COVID-19 Confirmed Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
             chart2.options.data[0].legendText = "GroundTruth" +  '(' + document.getElementById('searchbox').value + ')';
             chart2.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Confirmed Cases"]};
         }
@@ -406,6 +416,7 @@ window.onload = function () {
                 x: new Date(Date.parse(data[i].Date)),
                 y: data[i]["Predicted Cases"]
             });
+            // chart3.options.title.text = "COVID-19 Predicted Infection Trend" + "(" + document.getElementById('searchbox').value + ")";
             chart3.options.data[0].legendText = "Predicted" +  '(' + document.getElementById('searchbox').value + ')';
             chart3.options.data[0].dataPoints[i-1] = {x: new Date(Date.parse(data[i].Date)), y:data[i]["Predicted Cases"]}
         }   ///搜索框里的value引用这个函数，之后改data里面的值
