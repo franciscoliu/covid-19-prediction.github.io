@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+html {
+    line-height: 1.15; /* Correct the line height in all browsers */
+    -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
+}
+
 li{
     list-style: none;
 }
@@ -86,7 +91,7 @@ body{
 }
 
 #searchbox{
-    position: relative;
+    /* position: absolute; */
     display: inline-block;
     /* float: left; */
     height: 40px;
@@ -110,6 +115,8 @@ body{
 }
 
 /* Search Bar end */
+
+/* Autocomplete starts */
 .autocomplete {
     position: relative;
     display: inline-block;
@@ -143,15 +150,32 @@ body{
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
-/* Autocomplete starts */
-
-
-
 /* Autocomplete ends */
+
+/* About button starts */
+.about ul li a{
+    display: block;
+    padding: 0 10px;
+    margin-left: 20px;
+    margin-bottom: 2px;
+    text-decoration: none;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    color: #cccccc;
+}
+.about ul li a:hover{
+    border-bottom: 2px solid #00a4ff;
+
+}
+.about ul li{
+    float: left;
+}
+/* About button ends */
 
 /* Subnav Start */
 .subnav{
-    height: 50px;
+    height: 40px;
     background-color: #88aaec;
 }
 /* .subnav .menu ul li a{
@@ -292,7 +316,8 @@ table#corona_tb tr>td:first-child + td + td {
     background-color: rgba(0, 0, 0, 0.3);
     margin: 10px 10px 10px 420px;
 }
-/* click Button Start */
+/* click  Start */
+/* <h1 style='text-align: center; margin-top: 5px'>Confirmed / Predicted Trend</h1>  */
 
 /* .chart .all li{
     float: left;
@@ -318,12 +343,13 @@ table#corona_tb tr>td:first-child + td + td {
 
 /* Chart tab Start */
 .chart .tab_list{
+    margin-top: 15px;
     height: 39px;
     width: 1090px;
     background-color: rgba(0, 0, 0, 0.3);
 }
 .chart .tab_list .current{
-    background-color: red;
+    background-color: rgb(23, 63, 58);
     color: white;
 }
 .chart .tab_list li{
@@ -358,5 +384,6 @@ table#corona_tb tr>td:first-child + td + td {
     background-color: #ccc;
 }
 /* Chart tab content End */
+
 
 /* General Chart End */
