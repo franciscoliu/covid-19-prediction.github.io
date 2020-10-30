@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 def writeJson():
     state_dict = {}
-    with open('F:\Research Project\HTML_El\Python API\dataset.json') as file:
+    with open('F:\Research Project\franciscoliu.github.io\Python API\dataset.json') as file:
         dataset = json.load(file)
 
         for i in dataset["records"]:
