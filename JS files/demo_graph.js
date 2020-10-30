@@ -179,7 +179,8 @@ window.onload = function () {
     var json_data
     // ./JS files/JSON files/airtable.json
     // ./JS files/JSON files/demo.json
-    $.getJSON("./JS files/JSON files/airtable.json", (data) => {
+    //./Python API/airtable.json
+    $.getJSON("./Python API/airtable.json", (data) => {
         // c = data.responseJSON;
         json_data = data;
     });
