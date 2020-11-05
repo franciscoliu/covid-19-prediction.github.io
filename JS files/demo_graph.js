@@ -44,9 +44,10 @@ window.onload = function () {
 
     // First Chart ---- Both
     var chart = new CanvasJS.Chart("chartContainer", {
-        height: 380,
-        width: 1070,
+        height: 398,
+        width: 1083,
         animationEnabled: true,
+        zoomEnabled: true,
         theme: "light2",
         // title: {
         //     text: "COVID-19 Infection Trend" 
@@ -84,9 +85,10 @@ window.onload = function () {
    
     // Second Chart ---- Confirmed Cases
     var chart2 = new CanvasJS.Chart("chartContainer2", {
-        height: 380,
-        width: 1070,
+        height: 398,
+        width: 1083,
         animationEnabled: true,
+        zoomEnabled: true,
         theme: "light2",
         // title: {
         //     text: "COVID-19 Confirmed Infection Trend"
@@ -125,9 +127,10 @@ window.onload = function () {
 
     // Third Chart ---- Predicted Cases
     var chart3 = new CanvasJS.Chart("chartContainer3", {
-        height: 380,
-        width: 1070,
+        height: 398,
+        width: 1083,
         animationEnabled: true,
+        zoomEnabled: true,
         theme: "light2",
         // title: {
         //     text: "COVID-19 Predicted Infection Trend"
