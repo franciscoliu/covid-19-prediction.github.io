@@ -49,9 +49,9 @@ window.onload = function () {
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
-        // title: {
-        //     text: "COVID-19 Infection Trend" 
-        // },
+        title: {
+            
+        },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -90,9 +90,9 @@ window.onload = function () {
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
-        // title: {
-        //     text: "COVID-19 Confirmed Infection Trend"
-        // },
+        title: {
+           
+        },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -132,9 +132,9 @@ window.onload = function () {
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
-        // title: {
-        //     text: "COVID-19 Predicted Infection Trend"
-        // },
+        title: {
+
+        },
         axisX: {
             valueFormatString: "MMM, YYYY",
             interval: 1,
@@ -179,7 +179,7 @@ window.onload = function () {
     var check_box = corona_tb.getElementsByTagName("INPUT");
     var search_btn = document.querySelector('search_btn');
     var compare_btn = document.querySelector('compare_btn');
-    var json_data
+    var json_data;
     // ./JS files/JSON files/airtable.json
     // ./JS files/JSON files/demo.json
     //./Python API/airtable.json
