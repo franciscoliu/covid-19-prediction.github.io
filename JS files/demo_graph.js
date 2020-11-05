@@ -180,7 +180,7 @@ window.onload = function () {
     // ./JS files/JSON files/airtable.json
     // ./JS files/JSON files/demo.json
     //./Python API/airtable.json
-    $.getJSON("./Python API/airtable.json", (data) => {
+    $.getJSON("./CSV/newjson.json", (data) => {
         // c = data.responseJSON;
         json_data = data;
     });
