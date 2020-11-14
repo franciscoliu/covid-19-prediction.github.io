@@ -37,13 +37,13 @@ body{
 }
 .head{
     width: 100%;
-    height: 140px;
+    height: 125px;
     background-color: #092c74;
 }
 
 .logo img{
     margin-top: 27px ;
-    height: 100px;
+    height: 95px;
     width: 320px;
     line-height: 100px;
     cursor: pointer;
@@ -215,7 +215,7 @@ body{
 
 /* Subnav Start */
 .subnav{
-    height: 40px;
+    height: 35px;
     background-color: #88aaec;
 }
 /* .subnav .menu ul li a{
@@ -246,7 +246,7 @@ body{
 /* Banner Start */
 .banner{
     position: relative;
-    height: 500px;
+    height: 575px;
     background-color:#f1d3bf;
 }
 .banner .total_case{
@@ -265,7 +265,7 @@ body{
     /* overflow-x: auto;
     overflow-y: auto; */
     width: 400px;
-    height: 390px;
+    height: 465px;
     margin-top: 100px;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -315,7 +315,7 @@ table#corona_tb tbody {
     overflow: auto;
     /* Giving height to make the tbody scroll */
     /* Giving height dynamically is recommended */
-    height: 300px;
+    height: 380px;
 }
 
 table#corona_tb tr {
@@ -352,7 +352,7 @@ table#corona_tb tr>td:first-child + td + td {
     position: absolute;
     display: block;
     float: right;
-    height: 480px;
+    height: 555px;
     width: 1100px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.3);
