@@ -44,7 +44,7 @@ window.onload = function () {
 
     // First Chart ---- Both
     var chart = new CanvasJS.Chart("chartContainer", {
-        height: 398,
+        height: 475,
         width: 1083,
         animationEnabled: true,
         zoomEnabled: true,
@@ -85,7 +85,7 @@ window.onload = function () {
    
     // Second Chart ---- Confirmed Cases
     var chart2 = new CanvasJS.Chart("chartContainer2", {
-        height: 398,
+        height: 475,
         width: 1083,
         animationEnabled: true,
         zoomEnabled: true,
@@ -127,7 +127,7 @@ window.onload = function () {
 
     // Third Chart ---- Predicted Cases
     var chart3 = new CanvasJS.Chart("chartContainer3", {
-        height: 398,
+        height: 475,
         width: 1083,
         animationEnabled: true,
         zoomEnabled: true,
