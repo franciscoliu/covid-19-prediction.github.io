@@ -1,6 +1,7 @@
 var state = [
-    'Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa', 'Idaho', 'Illinois', 'Indiana',  'Kansas', 'Kentucky', 'Lousiana', 'Massachusetts', 'Maryland', 'Maine', 'Michigan', 'Minnesota', 'Missouri', 'Mississippi',  'Montana', 'North Carolina','North Dakota','Nebraska', 'New Hampshire','New Jersey','New Mexico','Nevada', 'New York',   'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Virginia','Vermont', 'Washington', 'Wisconsin', 'West Virginia',  'Wyoming'
+    'Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut', 'Distinct of Columbia', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa', 'Idaho', 'Illinois', 'Indiana',  'Kansas', 'Kentucky', 'Lousiana', 'Massachusetts', 'Maryland', 'Maine', 'Michigan', 'Minnesota', 'Missouri', 'Mississippi',  'Montana', 'North Carolina','North Dakota','Nebraska', 'New Hampshire','New Jersey','New Mexico','Nevada', 'New York',   'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Virginia','Vermont', 'Washington', 'Wisconsin', 'West Virginia',  'Wyoming'
 ]
+
 // console.log(state.length);
 var predicted = [];
 var confirmed = [];
@@ -14,7 +15,7 @@ var state_name = [];
 // });
 
 // Change the value in the last colume to state
-document.querySelectorAll('tr td:nth-child(3)')
+document.querySelectorAll('tr td:nth-child(1)')
     .forEach((x, i) => x.textContent = state[i]);
 
 
@@ -36,13 +37,16 @@ $.getJSON("./CSV/newjson.json", (data) => {
     }
 
     // Change the value in the 2nd colume to predicted case
-    document.querySelectorAll('tr td:nth-child(2)')
-        .forEach((x, i) => x.textContent = predicted[i]);
-    console.log(predicted);
+
+    // document.querySelectorAll('tr td:nth-child(2)')
+    //     .forEach((x, i) => x.textContent = predicted[i]);
+    // console.log(predicted);
+    
 
     // Change the value in the 2nd colume to predicted case
-    document.querySelectorAll('tr td:nth-child(1)')
-        .forEach((x, i) => x.textContent = confirmed[i]);
+
+    // document.querySelectorAll('tr td:nth-child(1)')
+    //     .forEach((x, i) => x.textContent = confirmed[i]);
 });
 
 
@@ -69,7 +73,8 @@ function GetSelected() {
     for (var i = 0; i < check_box.length; i++) {
         if (check_box[i].checked) {
             var row = check_box[i].parentNode.parentNode;
-            var val = row.cells[2].innerText;
+            var val = row.cells[0].innerText;
+            console.log(val);
             var checkbox = row.cells[3].innerHTML;
             message += "  " + val;
             message += "\n";
@@ -77,11 +82,4 @@ function GetSelected() {
     }
     // console.log(search_inp);
     // alert(message);
-}
-
-function checkSimilar() {
-    var search_btn = document.querySelector('search_btn');
-    let search_val = document.getElementById('searchbox').value;
-    var check_box = corona_tb.getElementsByTagName("INPUT");
-
 }

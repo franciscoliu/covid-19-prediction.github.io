@@ -7,7 +7,16 @@ def writeJson():
         for i in dataset:
             i["Confirmed Cases"] = int(i["Confirmed Cases"])
             i["Predicted Cases"] = int(i["Predicted Cases"])
+
+        ## check for unuploaded data  
+        # res = [i for i in dataset if not (i['Predicted Cases'] == -1)]
+
         for data in dataset:
+            ## If the data has not been uploaded yet, delete it.
+            if data['Confirmed Cases'] ==-1:
+                data.pop('Confirmed Cases')
+            if data['Predicted Cases'] ==-1:
+                data.pop('Predicted Cases')
             state = data.pop("State")
             state_dict.update(
                 {

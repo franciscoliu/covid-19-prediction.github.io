@@ -45,7 +45,7 @@ window.onload = function () {
     // First Chart ---- Both
     var chart = new CanvasJS.Chart("chartContainer", {
         height: 475,
-        width: 1083,
+        width: 1100,
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
@@ -86,7 +86,7 @@ window.onload = function () {
     // Second Chart ---- Confirmed Cases
     var chart2 = new CanvasJS.Chart("chartContainer2", {
         height: 475,
-        width: 1083,
+        width: 1100,
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
@@ -128,7 +128,7 @@ window.onload = function () {
     // Third Chart ---- Predicted Cases
     var chart3 = new CanvasJS.Chart("chartContainer3", {
         height: 475,
-        width: 1083,
+        width: 1100,
         animationEnabled: true,
         zoomEnabled: true,
         theme: "light2",
@@ -189,8 +189,17 @@ window.onload = function () {
         json_data = data;
     });
 
-    // display btn
+    
+
+    //The update function.
     $(".compare_btn").click(() => {
+        // let search_val = document.getElementById('searchbox').value;
+        // update();
+    });
+
+    // The update function is used to check the value of checkbox and display on the canvas.
+    // Will be executed later through a delayed function
+    function update(){
         let state =
         {
             "Alabama": "AL",
@@ -201,6 +210,7 @@ window.onload = function () {
             "Connecticut": "CT",
             "Washington": "WA",
             "Alaska": "AK",
+            "Distinct of Columbia": "DC",
             "Delaware": "DE",
             "Florida": "FL",
             "Georgia": "GA",
@@ -249,9 +259,19 @@ window.onload = function () {
         data3.splice(1, data3.length);
         // console.log(data1[0]);
         for (let i = 0; i < check_box.length; i++) {
-            if (check_box[i].checked) {
+            if (!check_box[i].checked){
+                data1.showInLegend = false;
+                data1.visible = false;
+                chart.options.data[0].dataPoints = [];
+                chart.options.data[1].dataPoints = [];
+                chart2.options.data[0].dataPoints = [];
+                chart3.options.data[0].dataPoints = [];
+            }
+            else if (check_box[i].checked) {
                 let row = check_box[i].parentNode.parentNode;
-                var val= row.cells[2].innerText;
+                // var val= row.cells[2].innerText;
+                let val = row.cells[0].innerText;
+                
                 var new_confirm = {
                     type: "line",
                     showInLegend: true,
@@ -264,6 +284,7 @@ window.onload = function () {
                     type: "line",
                     showInLegend: true,
                     name: "Predicted" + '(' + val + ')',
+                    // markerType: "square",
                     lineDashType: "dash",
                     dataPoints: []
                 }
@@ -271,10 +292,12 @@ window.onload = function () {
                 var arr2 = [];
                 for (let j = 0; j < json_data[state[val]].length; j++) {
                     // console.log(c[a[val]][j]);
-                    arr.push({
-                        x: new Date(Date.parse(json_data[state[val]][j].Date)),
-                        y: json_data[state[val]][j]["Confirmed Cases"]
-                            })
+                    if(json_data[state[val]][j]["Confirmed Cases"] != undefined){
+                        arr.push({
+                            x: new Date(Date.parse(json_data[state[val]][j].Date)),
+                            y: json_data[state[val]][j]["Confirmed Cases"]
+                                })
+                    }
                 }
                 new_confirm.dataPoints = arr;
                 data1.push(new_confirm);
@@ -282,33 +305,58 @@ window.onload = function () {
 
                 for (let j = 0; j < json_data[state[val]].length; j++) {
                     // console.log(c[a[val]][j]);
-                    arr2.push({
-                        x: new Date(Date.parse(json_data[state[val]][j].Date)),
-                        y: json_data[state[val]][j]["Predicted Cases"]
-                            })
+                    if(json_data[state[val]][j]["Predicted Cases"] != undefined){
+                        arr2.push({
+                            x: new Date(Date.parse(json_data[state[val]][j].Date)),
+                            y: json_data[state[val]][j]["Predicted Cases"]
+                        })
+                    } 
                 }
                 new_predict.dataPoints = arr2;
                 data1.push(new_predict);
                 data3.push(new_predict);
             }
-            if (!check_box[i].checked){
-                data1.showInLegend = false;
-                data1.visible = false;
-            }
+            
         }
         chart.render();
         chart2.render();
         chart3.render();
-        // data1[0].showInLegend = false;
-        // data1[1].showInLegend = false;
-        // data1[0].visible = false;
-        // data1[1].visible = false;
-    });
+    }
+   
+    // Run the update() function to show the graph on the canvas 
+    // every 2s. If the the number of checked checkbox does not equal to 3
+    // it will run the delayed function.
 
-    // searchbox btn
+    if($('input.check').filter(':checked').length !=3){
+        window.setInterval(function(){
+            /// call your function here
+            update();
+          }, 2000);
+    }
+    else{
+        clearInterval();
+    }
+   
+    
+    
+
+    // The search button beside the search bar.
     $(".search_btn").click(() => {
         // console.log(chart.data[0]);
+        search();
+    });
+
+    function search(){
         let search_val = document.getElementById('searchbox').value;
+        // console.log(search_val);
+        for (let i = 0; i < check_box.length; i++) {
+            let row = check_box[i].parentNode.parentNode;
+            let val = row.cells[0].innerText;
+            if(val == search_val){
+                check_box[i].checked = true;
+            }
+        }
+        console.log("I love function");
         console.log(search_val);
         let state =
         {
@@ -321,6 +369,7 @@ window.onload = function () {
             "Washington": "WA",
             "Alaska": "AK",
             "Delaware": "DE",
+            "Distinct of Columbia": "DC",
             "Florida": "FL",
             "Georgia": "GA",
             "Hawaii": "HI",
@@ -363,17 +412,12 @@ window.onload = function () {
             "Wisconsin": "WI",
             "Wyoming": "WY"
         }
-        for (let i = 0; i < check_box.length; i++) {
-            let row = check_box[i].parentNode.parentNode;
-            // console.log(row);
-            
+        if(check_box[i].checked){
+            addData(json_data[state[search_val]]);   
+            console.log(document.querySelectorAll('input[type="checkbox"]:checked').length);
         }
-        addData(json_data[state[search_val]]);
-        // data1[0].showInLegend = true;
-        // data1[1].showInLegend = true;
-        // data1[0].visible = true;
-        // data1[1].visible = true;
-    });
+    }
+
 
     function addData(data){
         // The data of the first chart(both confirmed and predicted)

@@ -193,8 +193,8 @@ body{
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
-    margin-left: 1050px;
+    min-width: 130px;
+    margin-left: 1030px;
     margin-top: 78px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -252,7 +252,7 @@ body{
 .banner .total_case{
     position: absolute;
     overflow: hidden;
-    width: 400px;
+    width: 350px;
     height: 80px;
     overflow: hidden;
     margin-top: 10px;
@@ -262,9 +262,10 @@ body{
 
 .banner .geodata{
     position: absolute;
+    vertical-align: middle;
     /* overflow-x: auto;
     overflow-y: auto; */
-    width: 400px;
+    width: 350px;
     height: 465px;
     margin-top: 100px;
     margin-left: 10px;
@@ -280,6 +281,7 @@ body{
 /* Confirmed Data Start*/
 
 .geodata caption{
+    vertical-align: middle;
     margin-top: 5px;
     margin-bottom: 5px;
     border-bottom: 1px rgba(99, 96, 96, 0.863) solid;    
@@ -305,11 +307,12 @@ body{
 } */
 table#corona_tb{
     display: table;
+    vertical-align: middle;
 }
 table#corona_tb thead, 
 table#corona_tb tbody {
     float: left;
-    width: 100%
+    width: 100%;
 }
 table#corona_tb tbody {
     overflow: auto;
@@ -340,7 +343,7 @@ table#corona_tb tr>td:last-child {
 }
 /** for older browsers (IE8), if you know number of columns in your table **/
 table#corona_tb tr>td:first-child + td + td {
-    width : 29%;
+    width : 50%;
 }
 .bg{
     background-color: #ccc;
@@ -353,10 +356,10 @@ table#corona_tb tr>td:first-child + td + td {
     display: block;
     float: right;
     height: 555px;
-    width: 1100px;
+    width: 1130px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.3);
-    margin: 10px 10px 10px 420px;
+    margin: 10px 10px 10px 375px;
 }
 /* click  Start */
 /* <h1 style='text-align: center; margin-top: 5px'>Confirmed / Predicted Trend</h1>  */
@@ -387,7 +390,7 @@ table#corona_tb tr>td:first-child + td + td {
 .chart .tab_list{
     margin-top: 15px;
     height: 39px;
-    width: 1093px;
+    width: 1113px;
     background-color: rgba(0, 0, 0, 0.3);
 }
 .chart .tab_list .current{
